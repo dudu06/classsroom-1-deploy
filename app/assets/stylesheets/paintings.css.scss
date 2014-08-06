@@ -1,0 +1,47 @@
+// Place all the styles related to the paintings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+$mainfont: 'Pacifico', cursive;
+$maincolor: #91A1AD;
+$basewidth: 600px;
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+		-ms-border-radius: $radius;
+			border-radius: $radius;
+}
+
+body {
+
+	background-image:url(starrynight.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+
+	.main {  /*main is nested inside of body. This is just a structure for easy reading!*/
+		background-color: white;
+		width: $basewidth/ 960px * 100%;
+		margin: 0 auto;
+		font-family: $mainfont;
+		@include border-radius(18px);       /*This is how you put in your mix in*/
+
+	/*Lets nest some other things like divs*/
+
+		.painting {
+			background-color: darken($maincolor, 37%);
+			color: lighten($maincolor, 20%);
+		}
+
+		.details {
+			background-color: $maincolor;
+
+			&:last-child {						/*Check what last child does! But I think it takes the child of the parent element, details, and allow us to change specific parts of this*/
+				border-bottom-left-radius: 50px;
+				border-bottom-right-radius: 50px;
+			}
+		}
+	}
+}
